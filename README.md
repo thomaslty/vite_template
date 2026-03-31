@@ -1,16 +1,54 @@
-# React + Vite
+# Vite + React + shadcn + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A template starter using Vite, React 19, shadcn/ui, and Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server with HMR |
+| `npm run build` | Production build |
+| `npm run lint` | Run ESLint |
+| `npm run preview` | Preview production build |
 
-## Expanding the ESLint configuration
+## Adding UI Components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project uses [shadcn/ui](https://ui.shadcn.com/) for pre-built, customizable components:
+
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add card
+npx shadcn@latest add dialog
+```
+
+Components are installed to `components/ui/` and can be imported via the `@/` alias:
+
+```jsx
+import { Button } from "@/components/ui/button";
+```
+
+## Tech Stack
+
+- **[Vite](https://vite.dev/)** — Build tool with HMR
+- **[React 19](https://react.dev/)** — UI framework
+- **[Tailwind CSS v4](https://tailwindcss.com/)** — Utility-first CSS (configured via `@tailwindcss/vite` plugin)
+- **[shadcn/ui](https://ui.shadcn.com/)** — Component library built on Radix UI
+- **[Lucide](https://lucide.dev/)** — Icon library
+- **[Geist](https://vercel.com/font)** — Font family
+
+## Project Structure
+
+```
+src/            → Application source (entry point, styles, assets)
+components/ui/  → shadcn UI components
+lib/utils.js    → cn() utility (clsx + tailwind-merge)
+```
+
+Theme tokens (colors, radii, fonts) are defined as CSS variables in `src/index.css` using Tailwind v4's `@theme inline` — there is no separate `tailwind.config.js`.
